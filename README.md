@@ -1,6 +1,6 @@
 # azure-pipelines
 
-Triggering azure pipelines from gitlab
+Triggering azure pipelines from any [Docker enabled] CI provider
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
 [![Version](https://img.shields.io/npm/v/azure-pipelines.svg)](https://npmjs.org/package/azure-pipelines)
@@ -8,11 +8,12 @@ Triggering azure pipelines from gitlab
 [![License](https://img.shields.io/npm/l/azure-pipelines.svg)](https://github.com/xWiiLLz/azure-pipelines/blob/master/package.json)
 
   <!-- toc -->
-* [azure-pipelines](#azure-pipelines)
-* [Docker](#docker)
-* [Usage](#usage)
-* [Commands](#commands)
-<!-- tocstop -->
+
+- [azure-pipelines](#azure-pipelines)
+- [Docker](#docker)
+- [Usage](#usage)
+- [Commands](#commands)
+  <!-- tocstop -->
 
 # Docker
 
@@ -28,6 +29,7 @@ $ docker run xwiillz/azure-pipelines-runner azure-pipelines run {Your Azure DevO
 # Usage
 
 <!-- usage -->
+
 ```sh-session
 $ npm install -g azure-pipelines-from-gitlab
 $ azure-pipelines COMMAND
@@ -39,13 +41,15 @@ USAGE
   $ azure-pipelines COMMAND
 ...
 ```
+
 <!-- usagestop -->
 
 # Commands
 
 <!-- commands -->
-* [`azure-pipelines help [COMMAND]`](#azure-pipelines-help-command)
-* [`azure-pipelines run ORGANIZATION PROJECT SOURCEBRANCH PERSONALACCESSTOKEN [DEFINITIONS]`](#azure-pipelines-run-organization-project-sourcebranch-personalaccesstoken-definitions)
+
+- [`azure-pipelines help [COMMAND]`](#azure-pipelines-help-command)
+- [`azure-pipelines run ORGANIZATION PROJECT SOURCEBRANCH PERSONALACCESSTOKEN [DEFINITIONS]`](#azure-pipelines-run-organization-project-sourcebranch-personalaccesstoken-definitions)
 
 ## `azure-pipelines help [COMMAND]`
 
@@ -98,4 +102,5 @@ EXAMPLE
 ```
 
 _See code: [src/commands/run.ts](https://github.com/xWiiLLz/azure-pipelines-from-gitlab/blob/v0.0.0/src/commands/run.ts)_
+
 <!-- commandsstop -->
