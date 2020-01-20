@@ -50,19 +50,35 @@ _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v2.2.3
 
 ## `azure-pipelines run ORGANIZATION PROJECT SOURCEBRANCH PERSONALACCESSTOKEN [DEFINITIONS]`
 
-trigger an azure pipeline and wait for it to finish
+trigger one or more azure pipelines and wait for them to finish
 
 ```
 USAGE
   $ azure-pipelines run ORGANIZATION PROJECT SOURCEBRANCH PERSONALACCESSTOKEN [DEFINITIONS]
 
 OPTIONS
-  -d, --definitions=definitions  build definitions to run. All will be ran if nothing is provided
+  -d, --definitions=definitions  build definition IDs to run as an array of integer. All available pipelines will be ran
+                                 if nothing is provided
+
   -h, --help                     show CLI help
 
 EXAMPLE
-  $ azure-pipelines run some-pipeline-id personal-access-token
-  hello world from ./src/hello.ts!
+  $ azure-pipelines run myOrganization myProject master personalAccessToken
+  Queuing build with definition id "2"...
+  Queuing build with definition id "3"...
+  Queuing build with definition id "4"...
+  Queued build "Desktop CI (WPF)" (build id = 27). Waiting for it to finish... (polling)
+  Queued build "Android-CI" (build id = 28). Waiting for it to finish... (polling)
+  Queued build "Server CI (.NET Core)" (build id = 26). Waiting for it to finish... (polling)
+  Got refreshed build status for Desktop CI (WPF). CurrentStatus: inProgress
+  Got refreshed build status for Desktop CI (WPF). CurrentStatus: completed
+  Build finished with result "succeeded"
+  Got refreshed build status for Server CI (.NET Core). CurrentStatus: inProgress
+  Got refreshed build status for Server CI (.NET Core). CurrentStatus: completed
+  Build finished with result "failed"
+  Got refreshed build status for Android-CI. CurrentStatus: inProgress
+  Got refreshed build status for Android-CI. CurrentStatus: completed
+  Build finished with result "failed"
 ```
 
 _See code: [src/commands/run.ts](https://github.com/xWiiLLz/azure-pipelines-from-gitlab/blob/v0.0.0/src/commands/run.ts)_

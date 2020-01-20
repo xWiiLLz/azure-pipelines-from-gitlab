@@ -31,11 +31,26 @@ interface AzureBuild {
 }
 
 export default class Run extends Command {
-  static description = "trigger an azure pipeline and wait for it to finish";
+  static description =
+    "trigger one or more azure pipelines and wait for them to finish";
 
   static examples = [
-    `$ azure-pipelines run some-pipeline-id personal-access-token
-hello world from ./src/hello.ts!
+    `$ azure-pipelines run myOrganization myProject master personalAccessToken
+Queuing build with definition id "2"...
+Queuing build with definition id "3"...
+Queuing build with definition id "4"...
+Queued build "Desktop CI (WPF)" (build id = 27). Waiting for it to finish... (polling)
+Queued build "Android-CI" (build id = 28). Waiting for it to finish... (polling)
+Queued build "Server CI (.NET Core)" (build id = 26). Waiting for it to finish... (polling)
+Got refreshed build status for Desktop CI (WPF). CurrentStatus: inProgress
+Got refreshed build status for Desktop CI (WPF). CurrentStatus: completed
+Build finished with result "succeeded"
+Got refreshed build status for Server CI (.NET Core). CurrentStatus: inProgress
+Got refreshed build status for Server CI (.NET Core). CurrentStatus: completed
+Build finished with result "failed"
+Got refreshed build status for Android-CI. CurrentStatus: inProgress
+Got refreshed build status for Android-CI. CurrentStatus: completed
+Build finished with result "failed"
 `
   ];
 
@@ -45,7 +60,7 @@ hello world from ./src/hello.ts!
     definitions: flags.integer({
       char: "d",
       description:
-        "build definitions to run. All will be ran if nothing is provided",
+        "build definition IDs to run as an array of integer. All available pipelines will be ran if nothing is provided",
       multiple: true
     })
   };
