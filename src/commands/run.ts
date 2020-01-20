@@ -103,11 +103,13 @@ hello world from ./src/hello.ts!
         );
       }
 
-      return Promise.all(
+      const all = await Promise.all(
         buildDefinitionIdsToTrigger.map((id: number) =>
           this.queueBuild(id, sourceBranch)
         )
       );
+
+      return this.exit(all.every(x => x) ? 0 : -1);
       // const response = await axios.post(requestUrl, {});
 
       // this.log(`Response: ${JSON.stringify(response)}`);
