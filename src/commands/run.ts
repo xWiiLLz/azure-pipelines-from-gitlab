@@ -142,6 +142,7 @@ hello world from ./src/hello.ts!
         `Queued build "${build.definition.name}" (build id = ${build.id}). Waiting for it to finish... (polling)`
       );
 
+      let currentStatus = build.status;
       const polling = async () => {
         const refreshedBuild = (
           await axios.get<AzureBuild>(
@@ -150,9 +151,13 @@ hello world from ./src/hello.ts!
           )
         ).data;
 
-        this.log(
-          `Got refreshed build status for ${refreshedBuild.definition.name}. CurrentStatus: ${refreshedBuild.status}`
-        );
+        if (currentStatus !== refreshedBuild.status) {
+          this.log(
+            `Got refreshed build status for ${refreshedBuild.definition.name}. CurrentStatus: ${refreshedBuild.status}`
+          );
+        }
+
+        currentStatus = refreshedBuild.status;
         if (refreshedBuild.status === "completed") {
           this.log(`Build finished with result "${refreshedBuild.result}"`);
           return resolve(refreshedBuild.result === "succeeded");
