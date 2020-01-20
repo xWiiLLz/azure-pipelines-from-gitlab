@@ -28,26 +28,8 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
-* [`azure-pipelines hello [ORGANIZATION] [PROJECT] [PERSONALACCESSTOKEN]`](#azure-pipelines-hello-organization-project-personalaccesstoken)
 * [`azure-pipelines help [COMMAND]`](#azure-pipelines-help-command)
-
-## `azure-pipelines hello [ORGANIZATION] [PROJECT] [PERSONALACCESSTOKEN]`
-
-trigger an azure pipeline and wait for it to finish
-
-```
-USAGE
-  $ azure-pipelines hello [ORGANIZATION] [PROJECT] [PERSONALACCESSTOKEN]
-
-OPTIONS
-  -h, --help  show CLI help
-
-EXAMPLE
-  $ azure-pipelines run some-pipeline-id personal-access-token
-  hello world from ./src/hello.ts!
-```
-
-_See code: [src/commands/hello.ts](https://github.com/xWiiLLz/azure-pipelines-from-gitlab/blob/v0.0.0/src/commands/hello.ts)_
+* [`azure-pipelines run ORGANIZATION PROJECT SOURCEBRANCH PERSONALACCESSTOKEN [DEFINITIONS]`](#azure-pipelines-run-organization-project-sourcebranch-personalaccesstoken-definitions)
 
 ## `azure-pipelines help [COMMAND]`
 
@@ -65,4 +47,23 @@ OPTIONS
 ```
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v2.2.3/src/commands/help.ts)_
+
+## `azure-pipelines run ORGANIZATION PROJECT SOURCEBRANCH PERSONALACCESSTOKEN [DEFINITIONS]`
+
+trigger an azure pipeline and wait for it to finish
+
+```
+USAGE
+  $ azure-pipelines run ORGANIZATION PROJECT SOURCEBRANCH PERSONALACCESSTOKEN [DEFINITIONS]
+
+OPTIONS
+  -d, --definitions=definitions  build definitions to run. All will be ran if nothing is provided
+  -h, --help                     show CLI help
+
+EXAMPLE
+  $ azure-pipelines run some-pipeline-id personal-access-token
+  hello world from ./src/hello.ts!
+```
+
+_See code: [src/commands/run.ts](https://github.com/xWiiLLz/azure-pipelines-from-gitlab/blob/v0.0.0/src/commands/run.ts)_
 <!-- commandsstop -->
