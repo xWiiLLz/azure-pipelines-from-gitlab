@@ -1,5 +1,4 @@
-azure-pipelines
-===============
+# azure-pipelines
 
 Triggering azure pipelines from gitlab
 
@@ -8,11 +7,26 @@ Triggering azure pipelines from gitlab
 [![Downloads/week](https://img.shields.io/npm/dw/azure-pipelines.svg)](https://npmjs.org/package/azure-pipelines)
 [![License](https://img.shields.io/npm/l/azure-pipelines.svg)](https://github.com/xWiiLLz/azure-pipelines/blob/master/package.json)
 
-<!-- toc -->
+  <!-- toc -->
+* [azure-pipelines](#azure-pipelines)
+* [Docker](#docker)
 * [Usage](#usage)
 * [Commands](#commands)
 <!-- tocstop -->
+
+# Docker
+
+This will most likely be useful to you if you're planning to trigger azure pipelines from an external CI. In my case, this was using Gitlab's CI.
+
+The syntax to launch the cli using docker is quite simple:
+
+```sh-session
+$ docker run xwiillz/azure-pipelines-runner azure-pipelines run {Your Azure DevOps Organization} {Your Azure DevOps Project} {Branch name from which you would like to trigger the CI} {Your Azure DevOps Personal Access Token} [-d some-definition-id] ...
+
+```
+
 # Usage
+
 <!-- usage -->
 ```sh-session
 $ npm install -g azure-pipelines-from-gitlab
@@ -26,7 +40,9 @@ USAGE
 ...
 ```
 <!-- usagestop -->
+
 # Commands
+
 <!-- commands -->
 * [`azure-pipelines help [COMMAND]`](#azure-pipelines-help-command)
 * [`azure-pipelines run ORGANIZATION PROJECT SOURCEBRANCH PERSONALACCESSTOKEN [DEFINITIONS]`](#azure-pipelines-run-organization-project-sourcebranch-personalaccesstoken-definitions)
