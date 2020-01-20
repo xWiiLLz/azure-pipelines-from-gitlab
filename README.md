@@ -15,11 +15,11 @@ Triggering azure pipelines from gitlab
 # Usage
 <!-- usage -->
 ```sh-session
-$ npm install -g azure-pipelines
+$ npm install -g azure-pipelines-from-gitlab
 $ azure-pipelines COMMAND
 running command...
 $ azure-pipelines (-v|--version|version)
-azure-pipelines/0.0.0 linux-x64 node-v12.13.0
+azure-pipelines-from-gitlab/0.0.0 linux-x64 node-v12.13.0
 $ azure-pipelines --help [COMMAND]
 USAGE
   $ azure-pipelines COMMAND
@@ -28,28 +28,26 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
-* [`azure-pipelines hello [FILE]`](#azure-pipelines-hello-file)
+* [`azure-pipelines hello [ORGANIZATION] [PROJECT] [PERSONALACCESSTOKEN]`](#azure-pipelines-hello-organization-project-personalaccesstoken)
 * [`azure-pipelines help [COMMAND]`](#azure-pipelines-help-command)
 
-## `azure-pipelines hello [FILE]`
+## `azure-pipelines hello [ORGANIZATION] [PROJECT] [PERSONALACCESSTOKEN]`
 
-describe the command here
+trigger an azure pipeline and wait for it to finish
 
 ```
 USAGE
-  $ azure-pipelines hello [FILE]
+  $ azure-pipelines hello [ORGANIZATION] [PROJECT] [PERSONALACCESSTOKEN]
 
 OPTIONS
-  -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
+  -h, --help  show CLI help
 
 EXAMPLE
-  $ azure-pipelines hello
+  $ azure-pipelines run some-pipeline-id personal-access-token
   hello world from ./src/hello.ts!
 ```
 
-_See code: [src/commands/hello.ts](https://github.com/xWiiLLz/azure-pipelines/blob/v0.0.0/src/commands/hello.ts)_
+_See code: [src/commands/hello.ts](https://github.com/xWiiLLz/azure-pipelines-from-gitlab/blob/v0.0.0/src/commands/hello.ts)_
 
 ## `azure-pipelines help [COMMAND]`
 
