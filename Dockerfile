@@ -14,8 +14,6 @@ RUN yarn
 RUN mkdir src lib
 COPY --chown=cli-runner . .
 
-
-
 RUN yarn pack
 
-
+CMD ["/bin/bash"]
