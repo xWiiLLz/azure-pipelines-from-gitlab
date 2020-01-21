@@ -77,6 +77,7 @@ Build finished with result "failed"
 
   async run() {
     const { args, flags } = this.parse(Run);
+    let exitCode: number;
 
     try {
       const { organization, project, personalAccessToken, sourceBranch } = args;
@@ -114,7 +115,7 @@ Build finished with result "failed"
       if (buildDefinitionIdsToTrigger.length === 0) {
         return this.error(
           `No build definition was is selected for queuing. Aborting...`,
-          { exit: -1 }
+          { exit: 2 }
         );
       }
 
@@ -123,14 +124,12 @@ Build finished with result "failed"
           this.queueBuild(id, sourceBranch)
         )
       );
-
-      return this.exit(all.every(x => x) ? 0 : -1);
-      // const response = await axios.post(requestUrl, {});
-
-      // this.log(`Response: ${JSON.stringify(response)}`);
+      exitCode = all.every(x => x) ? 0 : 1;
     } catch (error) {
       return this.error(error);
     }
+
+    return this.exit(exitCode);
   }
 
   private toB64(input: string): string {
